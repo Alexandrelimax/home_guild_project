@@ -1,0 +1,13 @@
+<div class="p-6 lg:p-10 mt-10 min-h-screen bg-[#020617]">
+  <app-page-header
+    title="Evento"
+    titleHighlight="Histórico"
+    subtitle="Registros de eventos e atividades do usuário."
+    subtitlePrefix="EVENTOS"
+    accentColor="#f43f5e">
+  </app-page-header>
+
+  <main class="max-w-7xl mx-auto">
+    <app-log-terminal [logs]="eventService.logs()"></app-log-terminal>
+  </main>
+</div>

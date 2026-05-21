@@ -1,0 +1,17 @@
+<div class="p-6 lg:p-10 mt-10 min-h-screen bg-[#020617]">
+  <app-page-header
+    title="Controle de"
+    titleHighlight="Missões"
+    subtitle="Tarefas diárias para cumprir com a vantagem de obter créditos e ranking."
+    subtitlePrefix="TASKS"
+    accentColor="#f59e0b">
+    <span class="text-[9px] text-slate-500 uppercase tracking-widest leading-none font-bold">Total de tarefas:</span>
+    <span class="text-xl text-white font-orbitron leading-none">{{ questService.quests().length }}</span>
+  </app-page-header>
+
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+    @for (quest of questService.quests(); track quest.id) {
+    <app-quest-card [quest]="quest" (onSubmit)="handleSubmit($event)"></app-quest-card>
+    }
+  </div>
+</div>

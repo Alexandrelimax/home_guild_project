@@ -1,0 +1,20 @@
+.header-section {
+    position: relative;
+}
+
+/* Efeito de brilho sutil atrás do título */
+.main-title {
+    text-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+}
+
+/* Estilo para a barra de progresso animada ao carregar */
+.bg-cyan-500 {
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsividade: No mobile, o header ocupa menos espaço */
+@media (max-width: 768px) {
+    .archive-container {
+        padding: 1.5rem;
+    }
+}

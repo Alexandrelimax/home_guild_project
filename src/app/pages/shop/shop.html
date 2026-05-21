@@ -1,0 +1,19 @@
+<div class="p-6 lg:p-10 mt-10 min-h-screen bg-[#020617]">
+  <app-page-header
+    title="Shopping das"
+    titleHighlight="Missões"
+    subtitle="Shop exclusivo para resgatar recompensas com seus créditos acumulados."
+    subtitlePrefix="SHOPPING"
+    accentColor="#06b6d4">
+    <span class="text-[9px] text-slate-500 uppercase tracking-widest leading-none">Available_Balance</span>
+    <div class="text-cyan-400 text-xl font-orbitron leading-none">
+      {{ userService.user()?.bits }} <span class="text-[10px] text-cyan-700 font-bold">BITS</span>
+    </div>
+  </app-page-header>
+
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    @for (item of rewardService.rewards(); track item.id) {
+    <app-reward-card [reward]="item" [user]="userService.user()" (redeem)="handleRedeem($event)"></app-reward-card>
+    }
+  </div>
+</div>

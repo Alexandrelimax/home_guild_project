@@ -1,0 +1,17 @@
+<header class="max-w-7xl mx-auto mb-10 flex flex-col md:flex-row md:items-end justify-between border-b border-white/5 pb-8 gap-6">
+  <div class="flex-1">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-1.5 h-6 shadow-lg" [style.background-color]="accentColor()" [style.box-shadow]="'0 0 10px ' + accentColor()"></div>
+      <h1 class="text-2xl md:text-4xl font-orbitron font-black uppercase tracking-tighter text-white leading-none">
+        {{ title() }} <span [style.color]="accentColor()">{{ titleHighlight() }}</span>
+      </h1>
+    </div>
+    <div class="flex items-start md:items-center gap-2 pl-1">
+      <span class="text-[9px] font-bold font-mono mt-0.5 md:mt-0 opacity-50" [style.color]="accentColor()">{{ subtitlePrefix() }}:</span>
+      <span class="text-[10px] text-slate-400 font-mono leading-tight uppercase tracking-wider">{{ subtitle() }}</span>
+    </div>
+  </div>
+  <div class="pl-4 md:pl-0 border-l border-white/10 md:border-l-0 font-mono flex flex-row md:flex-col items-center md:items-end gap-4 md:gap-1">
+    <ng-content></ng-content>
+  </div>
+</header>

@@ -1,0 +1,25 @@
+<div class="p-6 lg:p-10 mt-10 min-h-screen bg-[#020617]">
+  <app-page-header
+    title="Cards"
+    titleHighlight="Colecionáveis"
+    subtitle="Cards exclusivos de eventos e missões de alto rendimento."
+    subtitlePrefix="CARDS"
+    accentColor="#22c55e">
+    <span class="text-[9px] text-slate-500 uppercase tracking-widest leading-none">Completion_Rate</span>
+    <div class="flex items-center gap-3">
+      <span class="text-xl font-orbitron text-white leading-none">
+        {{ badgeService.badges().length }}<span class="text-green-500 text-sm">/{{ totalBadgeCount }}</span>
+      </span>
+      <div class="w-24 h-1 bg-slate-900 rounded-full overflow-hidden border border-white/5">
+        <div class="h-full bg-green-500 shadow-[0_0_8px_#22c55e]"
+          [style.width.%]="(badgeService.badges().length / totalBadgeCount) * 100"></div>
+      </div>
+    </div>
+  </app-page-header>
+
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    @for (badge of badgeService.badges(); track badge.id) {
+    <app-badge-card [badge]="badge" [isActive]="activeCardId() === badge.id" (toggle)="toggleCard($event)"></app-badge-card>
+    }
+  </div>
+</div>
