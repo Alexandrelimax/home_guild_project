@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
@@ -8,7 +8,8 @@ import { AuthCardLayoutComponent } from '../../components/auth-card-layout/auth-
   selector: 'app-login',
   standalone: true,
   imports: [FormsModule, RouterLink, AuthCardLayoutComponent],
-  templateUrl: './login.html'
+  templateUrl: './login.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginPage {
   private auth = inject(AuthService);

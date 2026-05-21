@@ -17,6 +17,6 @@ export class XpBarComponent {
 
   percentage = computed(() => {
     if (this.level() >= this.maxLevel) return 100;
-    return (this.xp() / this.xpPerLevel) * 100;
+    return Math.min((this.xp() / this.xpPerLevel) * 100, 100);
   });
 }

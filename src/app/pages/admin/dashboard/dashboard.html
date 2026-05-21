@@ -43,8 +43,9 @@
             <span class="text-[9px] font-mono text-amber-500 uppercase tracking-widest mb-2 z-10">Ag. Análise</span>
             <span class="text-3xl font-orbitron font-bold text-amber-500 z-10">{{
                 analytics()?.system_metrics?.pending_analysis }}</span>
-            <div *ngIf="(analytics()?.system_metrics?.pending_analysis ?? 0) > 0"
-                class="absolute inset-0 bg-amber-500/5 animate-pulse"></div>
+            @if ((analytics()?.system_metrics?.pending_analysis ?? 0) > 0) {
+            <div class="absolute inset-0 bg-amber-500/5 animate-pulse"></div>
+            }
         </div>
     </div>
 
