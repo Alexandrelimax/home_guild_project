@@ -1,0 +1,43 @@
+<app-auth-card-layout>
+  <div slot="header" class="bg-[#1e293b] p-6 flex flex-col items-center border-b border-slate-700">
+    <h1 class="text-2xl font-black tracking-tighter uppercase italic text-cyan-400">Novo Recruta</h1>
+    <p class="text-slate-400 text-[10px] font-bold tracking-[0.3em] uppercase">Configure seu perfil de jogo</p>
+  </div>
+
+  <div class="flex flex-col items-center gap-4">
+    <div class="relative">
+      <div class="absolute inset-0 bg-cyan-500/10 blur-xl rounded-full"></div>
+      <img [src]="avatar()" class="relative w-20 h-20 rounded-full border-2 border-cyan-500 object-cover shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+    </div>
+    <div class="flex gap-2">
+      @for (img of avatars; track img) {
+      <button (click)="selectAvatar(img)" [class.border-cyan-500]="avatar() === img"
+        class="w-10 h-10 rounded-lg border border-slate-700 overflow-hidden hover:border-cyan-400 transition-all focus:outline-none">
+        <img [src]="img" class="w-full h-full object-cover">
+      </button>
+      }
+    </div>
+  </div>
+
+  <div class="space-y-4">
+    <input type="text" [ngModel]="name()" (ngModelChange)="name.set($event)" placeholder="Nome do Perfil"
+      class="w-full bg-slate-800 border border-slate-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-all" />
+    <input type="email" [ngModel]="email()" (ngModelChange)="email.set($event)" placeholder="Digite seu e-mail"
+      class="w-full bg-slate-800 border border-slate-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-all" />
+    <input type="password" [ngModel]="password()" (ngModelChange)="password.set($event)" placeholder="Crie uma senha segura"
+      class="w-full bg-slate-800 border border-slate-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-all" />
+  </div>
+
+  @if (errorMessage()) {
+  <p class="text-red-400 text-xs font-mono text-center">{{ errorMessage() }}</p>
+  }
+
+  <button (click)="onRegister()" [disabled]="isLoading()"
+    class="w-full py-4 bg-orange-600 hover:bg-orange-500 disabled:opacity-50 rounded-xl font-bold uppercase tracking-widest shadow-lg shadow-orange-900/20 transition-all active:scale-95">
+    {{ isLoading() ? 'FORJANDO...' : 'CRIAR PERFIL' }}
+  </button>
+
+  <p class="text-center text-xs text-slate-500 mt-4">
+    Já possui uma conta? <a routerLink="/login" class="text-cyan-400 font-bold hover:underline cursor-pointer">Voltar ao Login</a>
+  </p>
+</app-auth-card-layout>

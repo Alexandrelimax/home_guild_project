@@ -1,0 +1,30 @@
+<div
+    class="user-card-container relative group p-3 bg-slate-900/40 border border-slate-800 backdrop-blur-sm rounded-lg overflow-hidden transition-all hover:border-cyan-500/50">
+
+    <div class="absolute inset-0 pointer-events-none scanline opacity-10"></div>
+
+    <div class="flex items-center gap-4 relative z-10">
+
+        <div class="relative">
+            <img [src]="user().avatar"
+                class="w-12 h-12 rounded border-2 border-cyan-500/30 object-cover shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+            <div
+                class="absolute -bottom-1 -right-1 bg-cyan-500 text-[#020617] text-[10px] font-orbitron px-1 font-bold rounded">
+                LVL {{ user().level }}
+            </div>
+        </div>
+
+        <div class="flex-1 min-w-0">
+            <div class="flex justify-between items-end mb-1">
+                <h3 class="text-sm font-orbitron font-bold text-white uppercase tracking-wider truncate">
+                    {{ user().name }}
+                </h3>
+                <span class="text-[10px] font-mono text-amber-400">
+                    {{ user().bits }} <span class="opacity-50">BITS</span>
+                </span>
+            </div>
+
+            <app-xp-bar [xp]="user().xp" [level]="user().level" accentClass="from-cyan-600 to-blue-400"></app-xp-bar>
+        </div>
+    </div>
+</div>
