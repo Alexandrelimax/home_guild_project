@@ -1,0 +1,23 @@
+<div class="flex flex-col gap-4">
+  <div class="flex justify-between items-end">
+    <label class="text-[10px] font-mono text-emerald-400 uppercase tracking-widest">Atribuir a</label>
+    <button type="button" (click)="selectAll()"
+      class="text-[9px] text-emerald-500 hover:text-white uppercase font-orbitron transition-colors border border-emerald-500/30 rounded px-2 py-1 bg-emerald-500/10 hover:bg-emerald-500/30">
+      Selecionar Todos
+    </button>
+  </div>
+
+  <div class="grid grid-cols-2 lg:grid-cols-3 gap-3">
+    @for (player of players(); track player.id) {
+    <div (click)="toggle(player.id)"
+      class="flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all duration-300"
+      [class.bg-emerald-900\/20]="selectedIds().includes(player.id)"
+      [class.border-emerald-500]="selectedIds().includes(player.id)"
+      [class.bg-black\/30]="!selectedIds().includes(player.id)"
+      [class.border-white\/5]="!selectedIds().includes(player.id)">
+      <img [src]="player.avatar" class="w-8 h-8 rounded shrink-0 border border-white/10 opacity-80" />
+      <span class="text-xs font-orbitron tracking-wider uppercase text-white">{{ player.name }}</span>
+    </div>
+    }
+  </div>
+</div>

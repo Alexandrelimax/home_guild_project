@@ -121,21 +121,11 @@
 
                 <!-- ALVOS -->
                 <div class="pt-4 mt-6 border-t border-white/5">
-                    <label
-                        class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-4">Competidores</label>
-                    <div class="flex gap-4">
-                        @for (player of players(); track player.id) {
-                        <button type="button" (click)="toggleTarget(player.id)"
-                            [class.border-violet-500]="targetUserIds().includes(player.id)"
-                            [class.bg-violet-500]="targetUserIds().includes(player.id)"
-                            [class.text-white]="targetUserIds().includes(player.id)"
-                            [class.border-white]="!targetUserIds().includes(player.id)"
-                            [class.opacity-10]="!targetUserIds().includes(player.id)"
-                            class="px-4 py-2 rounded text-xs font-orbitron tracking-widest border transition-all">
-                            {{ player.name }}
-                        </button>
-                        }
-                    </div>
+                  <app-player-picker
+                    [players]="players()"
+                    [selectedIds]="targetUserIds()"
+                    (selectionChange)="onSelectionChange($event)">
+                  </app-player-picker>
                 </div>
 
                 <div class="pt-8">

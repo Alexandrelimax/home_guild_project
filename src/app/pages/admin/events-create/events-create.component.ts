@@ -6,11 +6,12 @@ import { AdminService } from '../../../services/admin.service';
 import { EventCreateRequest } from '../../../interfaces/dtos';
 import { User } from '../../../interfaces/interface';
 import { environment } from '../../../../environments/environment';
+import { PlayerPickerComponent } from '../../../components/player-picker/player-picker.component';
 
 @Component({
   selector: 'app-admin-events-create',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, PlayerPickerComponent],
   templateUrl: './events-create.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -51,13 +52,8 @@ export class AdminEventsCreatePage implements OnInit {
       });
   }
 
-  toggleTarget(userId: number) {
-    const current = this.targetUserIds();
-    if (current.includes(userId)) {
-      this.targetUserIds.set(current.filter(id => id !== userId));
-    } else {
-      this.targetUserIds.set([...current, userId]);
-    }
+  onSelectionChange(ids: number[]) {
+    this.targetUserIds.set(ids);
   }
 
   onSubmit() {

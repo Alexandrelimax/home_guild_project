@@ -5,11 +5,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AdminService } from '../../../services/admin.service';
 import { User } from '../../../interfaces/interface';
 import { EventService } from '../../../services/event.service';
+import { PlayerPickerComponent } from '../../../components/player-picker/player-picker.component';
 
 @Component({
   selector: 'app-admin-tasks-create',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, PlayerPickerComponent],
   templateUrl: './tasks-create.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -43,17 +44,8 @@ export class AdminTasksCreatePage implements OnInit {
       });
   }
 
-  toggleUserSelection(userId: number) {
-    const currentList = this.taskForm.get('target_user_ids')?.value as number[];
-    if (currentList.includes(userId)) {
-      this.taskForm.patchValue({ target_user_ids: currentList.filter(id => id !== userId) });
-    } else {
-      this.taskForm.patchValue({ target_user_ids: [...currentList, userId] });
-    }
-  }
-
-  selectAll() {
-    this.taskForm.patchValue({ target_user_ids: this.players().map(p => p.id) });
+  onSelectionChange(ids: number[]) {
+    this.taskForm.patchValue({ target_user_ids: ids });
   }
 
   onSubmit() {
