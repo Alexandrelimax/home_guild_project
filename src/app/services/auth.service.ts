@@ -5,6 +5,9 @@ import { tap, catchError, throwError } from 'rxjs';
 import { ApiService } from './api.service';
 import { UserService } from './user.service';
 import { environment } from '../../environments/environment';
+import { QuestService } from './quest.service';
+import { EventService } from './event.service';
+import { RewardService } from './reward.service';
 import {
   UserDTO,
   LoginRequest,
@@ -17,6 +20,9 @@ export class AuthService {
   private api = inject(ApiService);
   private userService = inject(UserService);
   private router = inject(Router);
+  private questService = inject(QuestService);
+  private eventService = inject(EventService);
+  private rewardService = inject(RewardService);
 
   // Estados reativos
   private _currentUser = signal<UserDTO | null>(null);
@@ -53,7 +59,10 @@ export class AuthService {
     localStorage.removeItem(environment.authTokenKey);
     this._token.set(null);
     this._currentUser.set(null);
-    this.userService.clear(); // Limpa o estado de jogo
+    this.userService.clear();
+    this.questService.setQuests([]);
+    this.eventService.setLogs([]);
+    this.rewardService.setRewards([]);
     this.router.navigate(['/login']);
   }
 
