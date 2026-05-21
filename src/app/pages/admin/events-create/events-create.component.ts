@@ -39,6 +39,7 @@ export class AdminEventsCreatePage implements OnInit {
   isSubmitting = signal(false);
   successMessage = signal<string | null>(null);
   errorMessage = signal<string | null>(null);
+  private successTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   ngOnInit() {
     this.adminService.getPlayers()
@@ -50,6 +51,9 @@ export class AdminEventsCreatePage implements OnInit {
         },
         error: () => this.errorMessage.set('Erro ao carregar jogadores. Recarregue a página.')
       });
+    this.destroyRef.onDestroy(() => {
+      if (this.successTimeoutId) clearTimeout(this.successTimeoutId);
+    });
   }
 
   onSelectionChange(ids: number[]) {
@@ -96,8 +100,8 @@ export class AdminEventsCreatePage implements OnInit {
           this.targetUserIds.set(this.players().map(p => p.id));
           this.isSubmitting.set(false);
 
-          const timeoutId = setTimeout(() => this.successMessage.set(null), environment.ui.successMessageTimeoutMs);
-          this.destroyRef.onDestroy(() => clearTimeout(timeoutId));
+          if (this.successTimeoutId) clearTimeout(this.successTimeoutId);
+          this.successTimeoutId = setTimeout(() => this.successMessage.set(null), environment.ui.successMessageTimeoutMs);
         },
         error: (err) => {
           this.errorMessage.set('Erro ao criar evento: ' + (err.error?.detail || err.message));

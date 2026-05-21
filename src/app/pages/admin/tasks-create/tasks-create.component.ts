@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal, DestroyRef, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AdminService } from '../../../services/admin.service';
 import { User } from '../../../interfaces/interface';
@@ -30,7 +30,7 @@ export class AdminTasksCreatePage implements OnInit {
       description: [''],
       xp: [100, [Validators.required, Validators.min(0)]],
       bits: [10, [Validators.required, Validators.min(0)]],
-      target_user_ids: [[], [Validators.required, Validators.minLength(1)]],
+      target_user_ids: [[], [(ctrl: AbstractControl) => ctrl.value?.length >= 1 ? null : { minArrayLength: true }]],
       is_recurring: [false]
     });
   }

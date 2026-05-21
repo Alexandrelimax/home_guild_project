@@ -74,7 +74,7 @@
                 [selectedIds]="taskForm.get('target_user_ids')?.value"
                 (selectionChange)="onSelectionChange($event)">
               </app-player-picker>
-              @if (taskForm.get('target_user_ids')?.touched && taskForm.get('target_user_ids')?.errors?.['required']) {
+              @if (taskForm.get('target_user_ids')?.touched && taskForm.get('target_user_ids')?.errors?.['minArrayLength']) {
               <p class="text-rose-500 text-[10px] font-mono">Selecione pelo menos um jogador.</p>
               }
             </div>
