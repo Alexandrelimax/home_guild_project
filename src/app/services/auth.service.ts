@@ -56,6 +56,7 @@ export class AuthService {
   }
 
   logout() {
+    if (!this._token()) return; // already logged out, prevent double invocation
     localStorage.removeItem(environment.authTokenKey);
     this._token.set(null);
     this._currentUser.set(null);
