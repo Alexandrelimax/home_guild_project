@@ -1,0 +1,50 @@
+<div class="reward-card p-6 rounded-xl border bg-slate-900/60 flex flex-col justify-between transition-all duration-300 relative group"
+    [ngClass]="themeClass()" [class.opacity-40]="!canAfford() && !reward().redeemed">
+
+    <div class="flex justify-between items-start mb-4">
+        <div class="relative w-20 h-20 flex items-center justify-center -ml-2 -mt-2">
+            <div class="absolute inset-0 blur-2xl rounded-full opacity-40 animate-pulse" [ngClass]="glowClass()">
+            </div>
+
+            <img [src]="rewardIcon()" [alt]="reward().title"
+                class="relative w-full h-full object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-transform group-hover:scale-110 duration-300 animate-bounce-slow">
+        </div>
+
+        <div class="text-right">
+            <span class="text-[10px] uppercase tracking-[0.2em] font-bold" [ngClass]="accentTextClass()">
+                {{ isMilestone() ? 'Mastery' : 'Consumível' }}
+            </span>
+
+            <p class="text-lg font-orbitron text-white mt-1">
+                @if (isMilestone()) {
+                NÍVEL {{ reward().min_level }}
+                } @else {
+                {{ reward().cost }} <span class="text-xs opacity-50">BITS</span>
+                }
+            </p>
+        </div>
+    </div>
+
+    <div class="mb-6">
+        <h3
+            class="text-lg font-orbitron text-slate-100 uppercase leading-tight group-hover:text-white transition-colors">
+            {{ reward().title }}
+        </h3>
+        <p class="text-xs text-slate-400 mt-2 italic font-mono leading-relaxed">
+            {{ reward().description }}
+        </p>
+    </div>
+
+    <button (click)="redeem.emit(reward())" [disabled]="reward().redeemed || !canAfford()"
+        class="w-full py-2.5 rounded font-orbitron text-[10px] tracking-widest uppercase transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
+        [ngClass]="buttonClass()">
+
+        @if (reward().redeemed) {
+        <span class="flex items-center justify-center gap-2">
+            <i class="pi pi-check text-xs"></i> Resgatado
+        </span>
+        } @else {
+        {{ canAfford() ? 'Efetuar Resgate' : (isMilestone() ? 'Nível Insuficiente' : 'Bits Insuficientes') }}
+        }
+    </button>
+</div>
