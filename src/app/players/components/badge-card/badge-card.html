@@ -1,0 +1,29 @@
+<div class="card-container" (click)="handleCardClick()" [class.is-active]="isActive()">
+
+    <div class="original-card-content">
+        <div class="icon-wrapper">
+            <img [src]="badge().icon" class="badge-icon">
+        </div>
+
+        <div class="card-info-box">
+            <h3 class="badge-name">{{ badge().title }}</h3>
+
+            <div class="badge-tag" [attr.data-rarity]="badge().rarity">
+                {{ badge().rarity }}
+            </div>
+
+            <p class="badge-description">
+                {{ badge().description }}
+            </p>
+        </div>
+    </div>
+
+    @if (isActive()) {
+    <div class="card-expansion-overlay animate-pop">
+        <img [src]="badge().card_image" class="full-card-img">
+
+        <span class="tap-to-close-hint">TOQUE PARA FECHAR</span>
+    </div>
+    }
+
+</div>

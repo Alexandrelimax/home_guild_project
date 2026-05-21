@@ -6,12 +6,12 @@ export const routes: Routes = [
     {
         path: 'login',
         loadComponent: () =>
-            import('./pages/login/login.component').then(m => m.LoginPage)
+            import('./players/pages/login/login.component').then(m => m.LoginPage)
     },
     {
         path: 'register',
         loadComponent: () =>
-            import('./pages/register/register.component').then(m => m.RegisterPage)
+            import('./players/pages/register/register.component').then(m => m.RegisterPage)
     },
 
     // --- ROTAS DO ADMINISTRADOR (ALEXANDRE E KATE) ---
@@ -59,22 +59,22 @@ export const routes: Routes = [
             {
                 path: 'dashboard',
                 loadComponent: () =>
-                    import('./pages/dashboard/dashboard.component').then(m => m.DashboardPage)
+                    import('./players/pages/dashboard/dashboard.component').then(m => m.DashboardPage)
             },
             {
                 path: 'history',
                 loadComponent: () =>
-                    import('./pages/history/history.component').then(m => m.HistoryPage)
+                    import('./players/pages/history/history.component').then(m => m.HistoryPage)
             },
             {
                 path: 'shop',
                 loadComponent: () =>
-                    import('./pages/shop/shop.component').then(m => m.ShopPage)
+                    import('./players/pages/shop/shop.component').then(m => m.ShopPage)
             },
             {
                 path: 'badges',
                 loadComponent: () =>
-                    import('./pages/badges/badges.component').then(m => m.BadgesPage)
+                    import('./players/pages/badges/badges.component').then(m => m.BadgesPage)
             },
             {
                 path: '',

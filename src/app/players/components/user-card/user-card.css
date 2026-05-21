@@ -1,0 +1,34 @@
+.user-card-container {
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+        transition: 0.5s;
+    }
+
+    &:hover::before {
+        left: 100%;
+    }
+}
+
+.scanline {
+    width: 100%;
+    height: 2px;
+    background: rgba(34, 211, 238, 0.5);
+    position: absolute;
+    animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+    0% {
+        top: -10%;
+    }
+
+    100% {
+        top: 110%;
+    }
+}

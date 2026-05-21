@@ -1,0 +1,10 @@
+<header
+    class="fixed top-0 left-0 w-full z-[70] bg-[#020617]/80 backdrop-blur-md border-b border-white/5 p-4 pl-20 lg:pl-32">
+    <div class="max-w-[1400px] mx-auto flex items-center justify-between gap-6 btn-user">
+        <div class="flex-1">
+            @if (store.user(); as activeUser) {
+            <app-user-card [user]="activeUser"></app-user-card>
+            }
+        </div>
+    </div>
+</header>

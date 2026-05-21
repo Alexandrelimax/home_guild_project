@@ -1,0 +1,25 @@
+<div class="relative min-h-screen bg-[#020617] text-slate-300 overflow-x-hidden">
+
+    <app-header class="relative z-[80]"></app-header>
+
+    <button (click)="isMenuOpen.set(!isMenuOpen())"
+        class="fixed top-6 left-6 z-[110] flex flex-col gap-1.5 p-3 bg-slate-900/80 border border-cyan-500/30 rounded-lg">
+
+        <div class="w-6 h-0.5 bg-cyan-500" [class.rotate-45]="isMenuOpen()" [class.translate-y-2]="isMenuOpen()"></div>
+
+        <div class="w-6 h-0.5 bg-cyan-500" [class.opacity-0]="isMenuOpen()"></div>
+
+        <div class="w-6 h-0.5 bg-cyan-500" [class.-rotate-45]="isMenuOpen()" [class.-translate-y-2]="isMenuOpen()">
+        </div>
+
+    </button>
+
+    <app-sidebar [isOpen]="isMenuOpen()" (close)="isMenuOpen.set(false)">
+    </app-sidebar>
+
+    <main [class.opacity-50]="isMenuOpen()" class="transition-all duration-300 p-6 md:p-12 lg:pl-32 pt-20 min-h-screen">
+
+        <router-outlet></router-outlet>
+
+    </main>
+</div>
