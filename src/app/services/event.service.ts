@@ -27,7 +27,7 @@ export class EventService {
 
     addError(message: string) {
         this.addLogs([{
-            id: Date.now().toString(),
+            id: crypto.randomUUID(),
             type: 'error',
             message,
             created_at: new Date().toISOString()

@@ -1,6 +1,7 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { Component, inject, signal, OnInit, DestroyRef, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AdminService } from '../../../services/admin.service';
 import { EventCreateRequest } from '../../../interfaces/dtos';
 import { User } from '../../../interfaces/interface';
@@ -11,25 +12,27 @@ import { environment } from '../../../../environments/environment';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './events-create.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminEventsCreatePage implements OnInit {
   private adminService = inject(AdminService);
-  
+  private destroyRef = inject(DestroyRef);
+
   players = signal<User[]>([]);
-  
+
   // Quest properties
   title = signal('');
   description = signal('');
   xp = signal<number>(1000);
   bits = signal<number>(200);
-  
+
   // Badge properties
   badgeTitle = signal('');
   badgeDescription = signal('');
   badgeRarity = signal<'comum' | 'raro' | 'lendario'>('comum');
   badgeIcon = signal('');
   badgeCardImage = signal('');
-  
+
   targetUserIds = signal<number[]>([]);
 
   isSubmitting = signal(false);
@@ -37,13 +40,15 @@ export class AdminEventsCreatePage implements OnInit {
   errorMessage = signal<string | null>(null);
 
   ngOnInit() {
-    this.adminService.getPlayers().subscribe({
-      next: (data) => {
-        this.players.set(data);
-        this.targetUserIds.set(data.map(p => p.id));
-      },
-      error: () => this.errorMessage.set('Erro ao carregar jogadores. Recarregue a página.')
-    });
+    this.adminService.getPlayers()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (data) => {
+          this.players.set(data);
+          this.targetUserIds.set(data.map(p => p.id));
+        },
+        error: () => this.errorMessage.set('Erro ao carregar jogadores. Recarregue a página.')
+      });
   }
 
   toggleTarget(userId: number) {
@@ -78,23 +83,25 @@ export class AdminEventsCreatePage implements OnInit {
       target_user_ids: this.targetUserIds()
     };
 
-    this.adminService.createEvent(payload).subscribe({
-      next: (res) => {
-        this.successMessage.set(res.message);
-        this.title.set('');
-        this.description.set('');
-        this.badgeTitle.set('');
-        this.badgeDescription.set('');
-        this.badgeIcon.set('');
-        this.badgeCardImage.set('');
-        this.isSubmitting.set(false);
-        
-        setTimeout(() => this.successMessage.set(null), environment.ui.successMessageTimeoutMs);
-      },
-      error: (err) => {
-        this.errorMessage.set('Erro ao criar evento: ' + (err.error?.detail || err.message));
-        this.isSubmitting.set(false);
-      }
-    });
+    this.adminService.createEvent(payload)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (res) => {
+          this.successMessage.set(res.message);
+          this.title.set('');
+          this.description.set('');
+          this.badgeTitle.set('');
+          this.badgeDescription.set('');
+          this.badgeIcon.set('');
+          this.badgeCardImage.set('');
+          this.isSubmitting.set(false);
+
+          setTimeout(() => this.successMessage.set(null), environment.ui.successMessageTimeoutMs);
+        },
+        error: (err) => {
+          this.errorMessage.set('Erro ao criar evento: ' + (err.error?.detail || err.message));
+          this.isSubmitting.set(false);
+        }
+      });
   }
 }
