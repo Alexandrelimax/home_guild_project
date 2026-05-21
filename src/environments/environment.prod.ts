@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  // TODO: substituir pela URL real antes do deploy em produção
   apiBaseUrl: 'https://api.seudominio.com',
   authTokenKey: 'gf_token',
   game: {
@@ -11,7 +12,7 @@ export const environment = {
   },
   ui: {
     successMessageTimeoutMs: 4000,
-    defaultAvatarUrl: 'assets/avatars/default.png',
+    defaultAvatarUrl: 'https://img.icons8.com/nolan/1200/adventure.png',
     avatarOptions: [
       'https://img.icons8.com/nolan/1200/adventure.png',
       'https://img.icons8.com/nolan/1200/student-male.png',
