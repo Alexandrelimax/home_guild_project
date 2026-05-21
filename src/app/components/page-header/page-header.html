@@ -11,7 +11,9 @@
       <span class="text-[10px] text-slate-400 font-mono leading-tight uppercase tracking-wider">{{ subtitle() }}</span>
     </div>
   </div>
+  @if (showStats()) {
   <div class="pl-4 md:pl-0 border-l border-white/10 md:border-l-0 font-mono flex flex-row md:flex-col items-center md:items-end gap-4 md:gap-1">
     <ng-content></ng-content>
   </div>
+  }
 </header>

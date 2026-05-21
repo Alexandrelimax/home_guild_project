@@ -1,5 +1,4 @@
-import { Component, inject, signal, computed } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { BadgeService } from '../../services/badge.service';
 import { BadgeCardComponent } from '../../components/badge-card/badge-card.component';
 import { UserService } from '../../services/user.service';
@@ -9,8 +8,9 @@ import { PageHeaderComponent } from '../../components/page-header/page-header.co
 @Component({
   selector: 'app-badges',
   standalone: true,
-  imports: [CommonModule, BadgeCardComponent, PageHeaderComponent],
-  templateUrl: './badges.html'
+  imports: [BadgeCardComponent, PageHeaderComponent],
+  templateUrl: './badges.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BadgesPage {
   public badgeService = inject(BadgeService);

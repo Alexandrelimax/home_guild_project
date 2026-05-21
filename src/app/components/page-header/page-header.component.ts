@@ -12,4 +12,5 @@ export class PageHeaderComponent {
   subtitle = input.required<string>();
   subtitlePrefix = input.required<string>();
   accentColor = input.required<string>();
+  showStats = input<boolean>(false);
 }

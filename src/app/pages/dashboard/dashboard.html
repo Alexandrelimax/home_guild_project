@@ -4,7 +4,8 @@
     titleHighlight="Missões"
     subtitle="Tarefas diárias para cumprir com a vantagem de obter créditos e ranking."
     subtitlePrefix="TASKS"
-    accentColor="#f59e0b">
+    accentColor="#f59e0b"
+    [showStats]="true">
     <span class="text-[9px] text-slate-500 uppercase tracking-widest leading-none font-bold">Total de tarefas:</span>
     <span class="text-xl text-white font-orbitron leading-none">{{ questService.quests().length }}</span>
   </app-page-header>

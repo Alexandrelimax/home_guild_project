@@ -4,7 +4,8 @@
     titleHighlight="Missões"
     subtitle="Shop exclusivo para resgatar recompensas com seus créditos acumulados."
     subtitlePrefix="SHOPPING"
-    accentColor="#06b6d4">
+    accentColor="#06b6d4"
+    [showStats]="true">
     <span class="text-[9px] text-slate-500 uppercase tracking-widest leading-none">Available_Balance</span>
     <div class="text-cyan-400 text-xl font-orbitron leading-none">
       {{ userService.user()?.bits }} <span class="text-[10px] text-cyan-700 font-bold">BITS</span>
