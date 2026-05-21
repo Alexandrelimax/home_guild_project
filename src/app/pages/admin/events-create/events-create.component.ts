@@ -1,5 +1,4 @@
 import { Component, inject, signal, OnInit, DestroyRef, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AdminService } from '../../../services/admin.service';
@@ -7,11 +6,12 @@ import { EventCreateRequest } from '../../../interfaces/dtos';
 import { User } from '../../../interfaces/interface';
 import { environment } from '../../../../environments/environment';
 import { PlayerPickerComponent } from '../../../components/player-picker/player-picker.component';
+import { AdminBadgePreviewComponent } from '../../../components/admin/badge-preview/badge-preview.component';
 
 @Component({
   selector: 'app-admin-events-create',
   standalone: true,
-  imports: [CommonModule, FormsModule, PlayerPickerComponent],
+  imports: [FormsModule, PlayerPickerComponent, AdminBadgePreviewComponent],
   templateUrl: './events-create.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

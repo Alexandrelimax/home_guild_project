@@ -139,63 +139,12 @@
 
         <!-- PREVIEW DO BADGE -->
         <div>
-            <div class="sticky top-10 flex flex-col items-center">
-                <h3 class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-6">Preview da Recompensa</h3>
-
-                <!-- CARD IN-GAME STYLE -->
-                <div
-                    class="relative w-64 aspect-[3/4] rounded-xl overflow-hidden border border-white/10 group transition-all duration-300 shadow-2xl bg-slate-900 group-hover:scale-[1.02]">
-
-                    <!-- Fundo dinâmico por raridade -->
-                    <div class="absolute inset-0 bg-gradient-to-b opacity-80" [ngClass]="{
-                            'from-slate-800 to-[#020617]': badgeRarity() === 'comum',
-                            'from-blue-900 to-[#020617]': badgeRarity() === 'raro',
-                            'from-amber-700 to-amber-950': badgeRarity() === 'lendario'
-                        }">
-                    </div>
-
-                    <!-- Imagem -->
-                    <div
-                        class="absolute inset-x-0 top-0 h-48 bg-black/50 overflow-hidden flex items-center justify-center">
-                        @if (badgeCardImage()) {
-                        <img [src]="badgeCardImage()"
-                            class="h-full w-full object-cover opacity-70 group-hover:opacity-100 transition-opacity mix-blend-screen">
-                        } @else {
-                        <div
-                            class="text-slate-600 font-mono text-xs opacity-50 border border-dashed border-slate-600 p-8 rounded">
-                            sem imagem</div>
-                        }
-                    </div>
-
-                    <!-- Conteúdo inferior -->
-                    <div
-                        class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black via-black/90 to-transparent">
-                        <div class="text-center">
-                            <span
-                                class="inline-block px-2 border border-white/20 rounded shadow-[0_0_10px_rgba(255,255,255,0.1)] text-[8px] font-bold tracking-[0.2em] uppercase font-mono mb-2"
-                                [ngClass]="{
-                                    'text-slate-400 border-slate-400': badgeRarity() === 'comum',
-                                    'text-blue-400 border-blue-400': badgeRarity() === 'raro',
-                                    'text-amber-400 border-amber-400': badgeRarity() === 'lendario'
-                                }">
-                                {{ badgeRarity() }}
-                            </span>
-
-                            <h3
-                                class="text-xl font-orbitron font-black text-white leading-tight uppercase tracking-tighter mb-1 relative z-10 group-hover:scale-105 transition-transform origin-bottom">
-                                {{ badgeTitle() || '?' }}
-                            </h3>
-
-                            <div class="w-12 h-0.5 bg-green-500 mx-auto my-2"></div>
-
-                            <p
-                                class="text-[10px] text-slate-400 leading-tight italic font-mono relative z-10 min-h-[30px] flex items-center justify-center">
-                                "{{ badgeDescription() || '...' }}"
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <app-admin-badge-preview
+            [title]="badgeTitle()"
+            [description]="badgeDescription()"
+            [rarity]="badgeRarity()"
+            [cardImage]="badgeCardImage()">
+          </app-admin-badge-preview>
         </div>
     </div>
 </div>
