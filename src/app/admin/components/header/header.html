@@ -1,0 +1,22 @@
+<header
+    class="fixed top-0 left-0 w-full z-[70] bg-[#020617]/80 backdrop-blur-md border-b border-violet-500/10 p-4 pl-20 lg:pl-32">
+    <div class="max-w-[1400px] mx-auto flex items-center justify-between gap-6">
+        <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded border border-violet-500/30 flex items-center justify-center bg-violet-500/5">
+                <span class="text-violet-500 font-orbitron text-xs">GM</span>
+            </div>
+            <div>
+                <h2 class="text-[10px] font-orbitron tracking-[0.2em] text-slate-500 uppercase leading-none">Console de
+                    Administração</h2>
+                <p class="text-sm font-bold text-slate-200 mt-1">{{ auth.currentUser()?.name }}</p>
+            </div>
+        </div>
+
+        <div class="flex gap-4 items-center">
+            <div class="px-3 py-1 bg-slate-900 border border-slate-800 rounded">
+                <p class="text-[8px] font-mono text-slate-500 uppercase tracking-widest">Status</p>
+                <p class="text-[10px] font-mono text-emerald-500">ONLINE</p>
+            </div>
+        </div>
+    </div>
+</header>

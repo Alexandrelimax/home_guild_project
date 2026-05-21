@@ -1,6 +1,6 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { UserMetricsDTO } from '../../../interfaces/dtos';
-import { XpBarComponent } from '../../xp-bar/xp-bar.component';
+import { XpBarComponent } from '../../../components/xp-bar/xp-bar.component';
 
 @Component({
   selector: 'app-admin-player-card',

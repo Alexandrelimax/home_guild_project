@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AdminService } from '../../../services/admin.service';
 import { User } from '../../../interfaces/interface';
 import { EventService } from '../../../services/event.service';
-import { PlayerPickerComponent } from '../../../components/player-picker/player-picker.component';
+import { PlayerPickerComponent } from '../../components/player-picker/player-picker.component';
 
 @Component({
   selector: 'app-admin-tasks-create',

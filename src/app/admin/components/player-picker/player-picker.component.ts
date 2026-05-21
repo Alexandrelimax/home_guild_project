@@ -1,5 +1,5 @@
 import { Component, input, output, ChangeDetectionStrategy } from '@angular/core';
-import { User } from '../../interfaces/interface';
+import { User } from '../../../interfaces/interface';
 
 @Component({
   selector: 'app-player-picker',

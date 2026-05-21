@@ -5,8 +5,8 @@ import { AdminService } from '../../../services/admin.service';
 import { EventCreateRequest } from '../../../interfaces/dtos';
 import { User } from '../../../interfaces/interface';
 import { environment } from '../../../../environments/environment';
-import { PlayerPickerComponent } from '../../../components/player-picker/player-picker.component';
-import { AdminBadgePreviewComponent } from '../../../components/admin/badge-preview/badge-preview.component';
+import { PlayerPickerComponent } from '../../components/player-picker/player-picker.component';
+import { AdminBadgePreviewComponent } from '../../components/badge-preview/badge-preview.component';
 
 @Component({
   selector: 'app-admin-events-create',

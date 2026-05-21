@@ -1,0 +1,44 @@
+@if (isOpen()) {
+<div (click)="close.emit()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[80] transition-opacity"></div>
+}
+
+<aside [class.translate-x-0]="isOpen()" [class.-translate-x-full]="!isOpen()"
+    class="fixed top-0 left-0 h-full w-72 bg-[#0a0e14] border-r border-slate-800/50 z-[90] transition-transform duration-300 ease-in-out p-8 pt-24 shadow-2xl">
+
+    <div class="mb-10">
+        <h1 class="font-orbitron text-xs font-black tracking-[0.3em] text-slate-500 uppercase">
+            SISTEMA GM
+        </h1>
+        <div class="h-px w-12 bg-violet-500 mt-2"></div>
+    </div>
+
+    <nav class="flex flex-col gap-2">
+        <a routerLink="/admin/dashboard" (click)="close.emit()" routerLinkActive="active-link-admin"
+            class="nav-item">Status da Arena</a>
+        <a routerLink="/admin/approvals" (click)="close.emit()" routerLinkActive="active-link-admin"
+            class="nav-item flex justify-between">
+            Aprovações
+            <span
+                class="text-[9px] bg-violet-500/20 text-violet-400 px-1.5 rounded border border-violet-500/30">PENDENTE</span>
+        </a>
+        <a routerLink="/admin/tasks/create" (click)="close.emit()" routerLinkActive="active-link-admin"
+            class="nav-item">Criar Missão</a>
+        <a routerLink="/admin/events" (click)="close.emit()" routerLinkActive="active-link-admin" class="nav-item">Eventos
+            & Conquistas</a>
+    </nav>
+
+    <div class="absolute bottom-20 left-8 right-8">
+        <button (click)="logout()" class="w-full py-2.5 rounded font-orbitron text-[10px] tracking-widest uppercase
+            border border-rose-500/30 text-rose-400
+            hover:bg-rose-500/10 hover:border-rose-400
+            transition-all active:scale-95">
+            Encerrar Sessão
+        </button>
+    </div>
+
+    <div class="absolute bottom-6 left-8">
+        <p class="text-[8px] font-mono text-slate-600 tracking-tighter uppercase">
+            GM Mode // v1.0.3
+        </p>
+    </div>
+</aside>

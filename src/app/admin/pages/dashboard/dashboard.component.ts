@@ -2,8 +2,8 @@ import { Component, inject, signal, OnInit, DestroyRef, ChangeDetectionStrategy 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AdminService } from '../../../services/admin.service';
 import { AdminAnalyticsResponse } from '../../../interfaces/dtos';
-import { AdminStatCardComponent } from '../../../components/admin/stat-card/stat-card.component';
-import { AdminPlayerCardComponent } from '../../../components/admin/player-card/player-card.component';
+import { AdminStatCardComponent } from '../../components/stat-card/stat-card.component';
+import { AdminPlayerCardComponent } from '../../components/player-card/player-card.component';
 
 @Component({
   selector: 'app-admin-dashboard',
