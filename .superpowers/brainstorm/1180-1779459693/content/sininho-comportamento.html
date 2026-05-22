@@ -1,0 +1,77 @@
+<h2>O que acontece quando o player clica no sininho?</h2>
+<p class="subtitle">O sininho aparece no header com um badge numérico. Ao clicar, qual é o comportamento?</p>
+
+<div class="options">
+
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Dropdown inline com lista de notificações</h3>
+      <p>Um painel abre abaixo do sininho, sem sair da página atual. Cada notificação tem um link "Ver evento →" que navega para <code>/events</code>. Fechar o painel marca como lido (badge some).</p>
+      <div style="margin-top:12px; background:#0f172a; border-radius:8px; padding:10px; font-size:12px; position:relative;">
+        <div style="display:flex; justify-content:flex-end; margin-bottom:6px;">
+          <span style="font-size:18px; position:relative; cursor:pointer;">🔔<span style="position:absolute;top:-6px;right:-6px;background:#ef4444;color:white;border-radius:50%;width:16px;height:16px;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:bold;">2</span></span>
+        </div>
+        <div style="background:#1e293b; border-radius:8px; border:1px solid #334155; padding:8px; width:220px; margin-left:auto;">
+          <div style="color:#94a3b8; font-size:10px; font-weight:700; letter-spacing:1px; margin-bottom:8px;">NOTIFICAÇÕES</div>
+          <div style="border-left:3px solid #f59e0b; padding:6px 8px; margin-bottom:6px; background:#1c1008; border-radius:0 4px 4px 0;">
+            <div style="color:#fbbf24; font-size:11px; font-weight:600;">⚡ Novo Evento!</div>
+            <div style="color:#94a3b8; font-size:10px; margin:2px 0;">Lavar o Banheiro</div>
+            <div style="color:#6366f1; font-size:10px; cursor:pointer;">Ver evento →</div>
+          </div>
+          <div style="border-left:3px solid #22c55e; padding:6px 8px; background:#051a0e; border-radius:0 4px 4px 0;">
+            <div style="color:#4ade80; font-size:11px; font-weight:600;">✓ Quest Aprovada!</div>
+            <div style="color:#94a3b8; font-size:10px; margin:2px 0;">Limpar a Cozinha</div>
+            <div style="color:#6366f1; font-size:10px; cursor:pointer;">Ver conquista →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Clique no sininho navega direto para /events</h3>
+      <p>Simples e direto. O sininho é apenas um atalho de navegação — clicar vai para a página de Eventos onde o player vê o card. O badge numérico some ao visitar a página.</p>
+      <div style="margin-top:12px; background:#0f172a; border-radius:8px; padding:10px; font-size:12px;">
+        <div style="display:flex; justify-content:flex-end; margin-bottom:8px;">
+          <span style="font-size:18px; position:relative; cursor:pointer;">🔔<span style="position:absolute;top:-6px;right:-6px;background:#ef4444;color:white;border-radius:50%;width:16px;height:16px;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:bold;">1</span></span>
+        </div>
+        <div style="border:1px dashed #475569; border-radius:6px; padding:8px; text-align:center; color:#64748b; font-size:11px;">
+          ↓ navega direto para /events
+        </div>
+        <div style="margin-top:8px; border:2px solid #f59e0b; border-radius:8px; background:linear-gradient(135deg,#1c1008,#0f172a); padding:10px;">
+          <div style="color:#fbbf24; font-size:10px; font-weight:700; letter-spacing:1px; margin-bottom:4px;">⚡ EVENTO ESPECIAL · PENDENTE</div>
+          <div style="color:#f1f5f9; font-weight:600; font-size:12px;">Lavar o Banheiro</div>
+          <div style="color:#94a3b8; font-size:10px; margin:4px 0;">Complete esta missão para ganhar o badge exclusivo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Dropdown com toast de contexto + link</h3>
+      <p>O sininho abre um dropdown compacto mas com uma mini-prévia do badge que o player vai ganhar — cria o gancho visual do prêmio antes de navegar. Um botão "Ir para Eventos" leva à página.</p>
+      <div style="margin-top:12px; background:#0f172a; border-radius:8px; padding:10px; font-size:12px;">
+        <div style="display:flex; justify-content:flex-end; margin-bottom:6px;">
+          <span style="font-size:18px; position:relative; cursor:pointer;">🔔<span style="position:absolute;top:-6px;right:-6px;background:#ef4444;color:white;border-radius:50%;width:16px;height:16px;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:bold;">1</span></span>
+        </div>
+        <div style="background:#1e293b; border-radius:8px; border:1px solid #334155; padding:10px; width:210px; margin-left:auto;">
+          <div style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+            <div style="width:40px; height:40px; background:linear-gradient(135deg,#7c3aed,#4f46e5); border-radius:50%; border:2px solid #8b5cf6; display:flex; align-items:center; justify-content:center; font-size:18px; filter:blur(2px); opacity:0.5; flex-shrink:0;">🏆</div>
+            <div>
+              <div style="color:#fbbf24; font-size:11px; font-weight:600;">⚡ Novo Evento!</div>
+              <div style="color:#f1f5f9; font-size:11px;">Lavar o Banheiro</div>
+              <div style="color:#94a3b8; font-size:10px;">+150 XP · +30 Bits · Badge exclusivo</div>
+            </div>
+          </div>
+          <button style="width:100%; background:#6366f1; color:white; border:none; padding:5px; border-radius:5px; font-size:11px; font-weight:600; cursor:pointer;">Ir para Eventos →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,102 @@
+<h2>Como é a página de Eventos do player?</h2>
+<p class="subtitle">Nova rota <code>/events</code> acessível pelo sininho e pela sidebar. Como ela se organiza?</p>
+
+<div class="options">
+
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Lista de cards de evento com preview do badge</h3>
+      <p>Cada evento aparece como um card largo com borda dourada, mostrando título, XP/Bits, descrição e — do lado direito — um preview do badge que o player vai conquistar se completar. Status visível: Pendente / Em análise / Conquistado.</p>
+      <div style="margin-top:12px; background:#0f172a; border-radius:8px; padding:12px; display:flex; flex-direction:column; gap:8px;">
+        <!-- Card evento pendente -->
+        <div style="border:2px solid #f59e0b; border-radius:8px; background:linear-gradient(135deg,#1c1008,#0f172a); padding:12px; display:flex; gap:12px; align-items:center;">
+          <div style="flex:1;">
+            <div style="color:#fbbf24; font-size:11px; font-weight:700; letter-spacing:1px; margin-bottom:4px;">⚡ EVENTO ESPECIAL</div>
+            <div style="color:#f1f5f9; font-weight:600; margin-bottom:4px;">Lavar o Banheiro</div>
+            <div style="color:#94a3b8; font-size:12px; margin-bottom:8px;">Complete esta missão para ganhar a conquista exclusiva.</div>
+            <div style="display:flex; gap:8px;">
+              <span style="background:#1e3a1e; color:#4ade80; padding:3px 8px; border-radius:4px; font-size:11px;">+150 XP</span>
+              <span style="background:#1e2a3a; color:#60a5fa; padding:3px 8px; border-radius:4px; font-size:11px;">+30 Bits</span>
+              <span style="background:#2d1a00; color:#f59e0b; padding:3px 8px; border-radius:4px; font-size:11px;">● Pendente</span>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+            <div style="width:52px; height:52px; background:linear-gradient(135deg,#7c3aed,#4f46e5); border-radius:50%; border:2px solid #8b5cf6; display:flex; align-items:center; justify-content:center; font-size:24px; filter:blur(2px); opacity:0.5;">🏆</div>
+            <div style="color:#64748b; font-size:10px;">Badge bloqueado</div>
+          </div>
+        </div>
+        <!-- Card evento conquistado -->
+        <div style="border:2px solid #22c55e; border-radius:8px; background:linear-gradient(135deg,#051a0e,#0f172a); padding:12px; display:flex; gap:12px; align-items:center; opacity:0.8;">
+          <div style="flex:1;">
+            <div style="color:#4ade80; font-size:11px; font-weight:700; letter-spacing:1px; margin-bottom:4px;">✓ CONQUISTA DESBLOQUEADA</div>
+            <div style="color:#f1f5f9; font-weight:600; margin-bottom:4px;">Limpar a Cozinha</div>
+            <div style="display:flex; gap:8px; margin-top:6px;">
+              <span style="background:#1e3a1e; color:#4ade80; padding:3px 8px; border-radius:4px; font-size:11px;">✓ Aprovado</span>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+            <div style="width:52px; height:52px; background:linear-gradient(135deg,#7c3aed,#4f46e5); border-radius:50%; border:2px solid #8b5cf6; display:flex; align-items:center; justify-content:center; font-size:24px;">🏆</div>
+            <div style="color:#4ade80; font-size:10px;">Conquistado!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Duas seções: Ativos e Histórico</h3>
+      <p>A página divide em <strong>"Eventos Ativos"</strong> (os que ainda estão pendentes ou em análise) e <strong>"Histórico de Eventos"</strong> (aprovados/perdidos). Visual mais limpo para quando acumula muitos eventos.</p>
+      <div style="margin-top:12px; background:#0f172a; border-radius:8px; padding:12px; font-size:12px;">
+        <div style="color:#fbbf24; font-weight:700; margin-bottom:8px; font-size:11px; letter-spacing:1px;">⚡ ATIVOS (1)</div>
+        <div style="border:2px solid #f59e0b; border-radius:6px; background:#1c1008; padding:10px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="color:#f1f5f9; font-weight:600;">Lavar o Banheiro</div>
+            <div style="color:#94a3b8; font-size:11px;">+150 XP · +30 Bits · 🏆 Badge exclusivo</div>
+          </div>
+          <button style="background:#f59e0b; color:#000; border:none; padding:5px 12px; border-radius:5px; font-size:11px; font-weight:700; cursor:pointer;">Enviar</button>
+        </div>
+        <div style="color:#4ade80; font-weight:700; margin-bottom:8px; font-size:11px; letter-spacing:1px;">✓ HISTÓRICO (2)</div>
+        <div style="display:flex; flex-direction:column; gap:4px; opacity:0.6;">
+          <div style="border:1px solid #22c55e; border-radius:6px; background:#051a0e; padding:8px; display:flex; justify-content:space-between; color:#f1f5f9; font-size:11px;"><span>Limpar a Cozinha</span><span style="color:#4ade80;">✓ Aprovado</span></div>
+          <div style="border:1px solid #475569; border-radius:6px; background:#1e293b; padding:8px; display:flex; justify-content:space-between; color:#64748b; font-size:11px;"><span>Organizar a Sala</span><span style="color:#ef4444;">✗ Rejeitado</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Grade de cards com foco no badge (estilo coleção)</h3>
+      <p>Ao invés de lista, uma grade visual onde o badge fica em destaque no centro do card — bloqueado (desfocado) quando pendente, revelado quando conquistado. Dá uma sensação de colecionável, conectando visualmente à aba de Conquistas.</p>
+      <div style="margin-top:12px; background:#0f172a; border-radius:8px; padding:12px; display:flex; gap:10px; flex-wrap:wrap;">
+        <!-- Card pendente -->
+        <div style="border:2px solid #f59e0b; border-radius:8px; background:#1c1008; padding:12px; width:130px; text-align:center;">
+          <div style="width:56px; height:56px; margin:0 auto 8px; background:linear-gradient(135deg,#7c3aed,#4f46e5); border-radius:50%; border:2px solid #8b5cf6; display:flex; align-items:center; justify-content:center; font-size:26px; filter:blur(3px); opacity:0.4;">🏆</div>
+          <div style="color:#fbbf24; font-size:10px; font-weight:700; margin-bottom:4px;">⚡ EVENTO</div>
+          <div style="color:#f1f5f9; font-size:11px; font-weight:600; margin-bottom:4px;">Lavar Banheiro</div>
+          <div style="color:#94a3b8; font-size:10px;">+150XP · +30 Bits</div>
+          <button style="margin-top:8px; background:#f59e0b; color:#000; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:700; width:100%; cursor:pointer;">Enviar ✓</button>
+        </div>
+        <!-- Card conquistado -->
+        <div style="border:2px solid #22c55e; border-radius:8px; background:#051a0e; padding:12px; width:130px; text-align:center;">
+          <div style="width:56px; height:56px; margin:0 auto 8px; background:linear-gradient(135deg,#7c3aed,#4f46e5); border-radius:50%; border:2px solid #8b5cf6; display:flex; align-items:center; justify-content:center; font-size:26px;">🏆</div>
+          <div style="color:#4ade80; font-size:10px; font-weight:700; margin-bottom:4px;">✓ CONQUISTADO</div>
+          <div style="color:#f1f5f9; font-size:11px; font-weight:600; margin-bottom:4px;">Limpar Cozinha</div>
+          <div style="color:#4ade80; font-size:10px;">Badge desbloqueado!</div>
+        </div>
+        <!-- Card em análise -->
+        <div style="border:2px solid #818cf8; border-radius:8px; background:#0f0f2a; padding:12px; width:130px; text-align:center;">
+          <div style="width:56px; height:56px; margin:0 auto 8px; background:linear-gradient(135deg,#7c3aed,#4f46e5); border-radius:50%; border:2px solid #8b5cf6; display:flex; align-items:center; justify-content:center; font-size:26px; filter:blur(1px); opacity:0.6;">🏆</div>
+          <div style="color:#818cf8; font-size:10px; font-weight:700; margin-bottom:4px;">🔍 EM ANÁLISE</div>
+          <div style="color:#f1f5f9; font-size:11px; font-weight:600; margin-bottom:4px;">Organizar Sala</div>
+          <div style="color:#818cf8; font-size:10px;">Aguardando admin...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
