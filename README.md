@@ -116,51 +116,44 @@ src/app/
 
 ---
 
-## Fluxo de Autenticação e Roteamento
+## Jornada do Player
 
 ```mermaid
 flowchart TD
-    A([Usuário acessa a aplicação]) --> B{Token no\nlocalStorage?}
-    B -- Não --> C["/auth/login"]
-    B -- Sim --> D[AuthService.refreshProfile]
-    D -- 401 Unauthorized --> E[logout + /login]
-    D -- Sucesso --> F{role?}
-    F -- admin --> G[adminGuard libera /admin/**]
-    F -- user --> H[authGuard libera /**]
+    LOGIN([Login]) --> DASH
 
-    C --> I[POST /auth/login]
-    I -- Erro --> C
-    I -- Sucesso --> J[Salva token\nBusca perfil /auth/me]
-    J --> F
+    DASH["Dashboard\n─────────────\nVer card de perfil\nXP · Nível · Bits\nVer quests ativas\nVer log de eventos"]
 
-    G --> K["Painel Admin\ndashboard · approvals\ntasks-create · events"]
-    H --> L["Interface Player\ndashboard · shop\nbadges · history"]
+    DASH --> SUBMIT["Submeter quest concluída\n→ status vai para analyzing\n→ aguarda revisão do admin"]
+
+    DASH --> SHOP["Shop\n─────────────\nVer catálogo de recompensas"]
+    SHOP --> REDEEM_BITS["Resgatar reward por Bits\n(exige saldo suficiente)"]
+    SHOP --> REDEEM_MILE["Resgatar reward por Milestone\n(exige nível mínimo)"]
+
+    DASH --> BADGES["Badges\n─────────────\nVer coleção de badges\ncomum · raro · lendário"]
+
+    DASH --> HISTORY["Histórico\n─────────────\nVer todos os logs do jogo\naprovações · level-ups · resgates"]
 ```
 
 ---
 
-## Ciclo de Vida de uma Quest
+## Jornada do Admin
 
 ```mermaid
-stateDiagram-v2
-    [*] --> pending : Admin cria a quest\ne atribui ao jogador
+flowchart TD
+    LOGIN([Login]) --> DASH
 
-    pending --> analyzing : Jogador submete\na conclusão
+    DASH["Dashboard\n─────────────\nTotal de players\nQuests aprovadas · reprovadas\nPendentes de análise\nMétricas individuais por jogador"]
 
-    analyzing --> approved : Admin aprova
-    analyzing --> pending : Admin rejeita
+    DASH --> APPROVALS["Approvals\n─────────────\nVer fila de quests\nem análise"]
+    APPROVALS --> APPROVE["Aprovar quest\n→ credita XP + Bits ao jogador\n→ verifica level-up\n→ quest recorrente volta para pending"]
+    APPROVALS --> REJECT["Rejeitar quest\n→ quest volta para pending\n→ sem penalidade ao jogador"]
 
-    approved --> pending : Quest recorrente\n(is_recurring = true)
-    approved --> [*] : Quest única\nconcluída
+    DASH --> TASKS["Criar Task\n─────────────\nDefinir título e descrição\nDefinir XP e Bits da recompensa\nMarcar como recorrente ou não\nSelecionar jogadores-alvo"]
+    TASKS --> PUBLISH_TASK["Publicar quest\n→ aparece como pending\npara cada jogador selecionado"]
 
-    approved --> levelup : XP acumulado\natingiu o próximo nível
-
-    state approved {
-        [*] --> credita_xp_bits
-        credita_xp_bits --> verifica_nivel
-        verifica_nivel --> concede_badge : É um Evento
-        verifica_nivel --> [*] : Quest normal
-    }
+    DASH --> EVENTS["Criar Evento\n─────────────\nDefinir quest do evento\nDefinir badge (nome · raridade · imagem)\nSelecionar jogadores-alvo"]
+    EVENTS --> PUBLISH_EVENT["Publicar evento\n→ aparece como pending\n→ aprovação concede badge\naém de XP e Bits"]
 ```
 
 ---
