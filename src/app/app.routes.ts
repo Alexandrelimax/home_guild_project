@@ -62,6 +62,11 @@ export const routes: Routes = [
                     import('./players/pages/dashboard/dashboard.component').then(m => m.DashboardPage)
             },
             {
+                path: 'events',
+                loadComponent: () =>
+                    import('./players/pages/events/events.component').then(m => m.EventsPage)
+            },
+            {
                 path: 'history',
                 loadComponent: () =>
                     import('./players/pages/history/history.component').then(m => m.HistoryPage)
