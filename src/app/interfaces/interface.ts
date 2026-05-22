@@ -29,6 +29,17 @@ export interface Quest {
     readonly user_id: number;
 }
 
+export interface EventQuest {
+    readonly id: number;
+    readonly title: string;
+    readonly description?: string;
+    readonly xp: number;
+    readonly bits: number;
+    readonly status: 'pending' | 'analyzing' | 'approved';
+    readonly badge: Badge;
+    readonly updated_at?: string;
+}
+
 export interface Reward {
     readonly id: number;
     readonly title: string;
@@ -43,7 +54,17 @@ export interface Reward {
 export interface GameLog {
     readonly id: string;
     readonly message: string;
-    readonly type: 'info' | 'approved' | 'rejected' | 'analyzing' | 'levelup' | 'downgrade' | 'error';
+    readonly type:
+        | 'info'
+        | 'approved'
+        | 'rejected'
+        | 'analyzing'
+        | 'levelup'
+        | 'downgrade'
+        | 'error'
+        | 'event_assigned'
+        | 'badge_unlocked'
+        | 'legendary_unlock';
     readonly created_at: string;
 }
 
