@@ -1,7 +1,7 @@
 import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-import { NotificationService } from '../../services/notification.service';
-import { GameLog } from '../../interfaces/interface';
+import { NotificationService } from '../../../services/notification.service';
+import { GameLog } from '../../../interfaces/interface';
 
 @Component({
   selector: 'app-notification-bell',

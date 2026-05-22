@@ -1,0 +1,46 @@
+<h2>Como o player descobre que recebeu um evento?</h2>
+<p class="subtitle">O admin acabou de criar um evento e distribuir para os players. De que forma isso aparece para eles?</p>
+
+<div class="options">
+
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Sininho no header com badge de contagem</h3>
+      <p>Um ícone de sino aparece no topo do app com um número vermelho (ex: "1"). Clicar abre um painel lateral ou dropdown listando os eventos pendentes. O número some quando o player abre o painel.</p>
+      <div style="margin-top:12px; display:flex; align-items:center; gap:8px; padding:10px; background:#1e293b; border-radius:8px; font-size:13px;">
+        <span style="font-size:18px; position:relative;">🔔<span style="position:absolute;top:-6px;right:-6px;background:#ef4444;color:white;border-radius:50%;width:16px;height:16px;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:bold;">1</span></span>
+        <span style="color:#94a3b8;">Home Guild</span>
+        <span style="margin-left:auto; color:#64748b; font-size:12px;">Dashboard · Histórico · Loja · Conquistas</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Card de evento em destaque no Dashboard</h3>
+      <p>Sem sininho. No dashboard do player, eventos novos aparecem numa seção separada "Eventos Ativos", acima das quests normais, com borda dourada/colorida. O destaque visual chama atenção sem precisar de notificação extra.</p>
+      <div style="margin-top:12px; padding:10px; background:#1e293b; border-radius:8px; font-size:13px;">
+        <div style="color:#fbbf24; font-weight:600; margin-bottom:6px;">⚡ EVENTO ATIVO</div>
+        <div style="background: linear-gradient(135deg, #78350f, #1e293b); border:2px solid #f59e0b; border-radius:6px; padding:8px; color:#fef3c7;">🧹 Limpar o Banheiro · +150 XP · +30 Bits</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Sininho + seção destacada no Dashboard</h3>
+      <p>Combinação das duas: o sininho avisa que chegou um evento novo (some depois que o player abre o dashboard). No dashboard, eventos sempre ficam numa seção dedicada com visual diferente das quests comuns.</p>
+      <div style="margin-top:12px; display:flex; flex-direction:column; gap:8px; padding:10px; background:#1e293b; border-radius:8px; font-size:13px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="font-size:16px; position:relative;">🔔<span style="position:absolute;top:-5px;right:-5px;background:#ef4444;color:white;border-radius:50%;width:14px;height:14px;font-size:9px;display:flex;align-items:center;justify-content:center;">1</span></span>
+          <span style="color:#94a3b8; font-size:12px;">Notificação no header → some ao ver o dashboard</span>
+        </div>
+        <div style="background: linear-gradient(135deg, #78350f, #1e293b); border:2px solid #f59e0b; border-radius:6px; padding:8px; color:#fef3c7;">⚡ Evento: Limpar o Banheiro · Seção separada das quests</div>
+      </div>
+    </div>
+  </div>
+
+</div>

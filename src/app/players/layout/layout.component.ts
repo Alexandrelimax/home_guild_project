@@ -1,14 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
-import { SidebarComponent } from '../players/components/sidebar/sidebar.component';
-import { HeaderComponent } from '../players/components/header/header.component';
+import { SidebarComponent } from '../components/sidebar/sidebar.component';
+import { HeaderComponent } from '../components/header/header.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
   imports: [RouterOutlet, SidebarComponent, HeaderComponent],
-  templateUrl: './layout.html'
+  templateUrl: './layout.html',
 })
 export class LayoutComponent {
   isMenuOpen = signal(false);
