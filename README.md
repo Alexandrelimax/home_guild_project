@@ -121,7 +121,7 @@ src/app/
 ```mermaid
 flowchart TD
     A([Usuário acessa a aplicação]) --> B{Token no\nlocalStorage?}
-    B -- Não --> C[/auth/login]
+    B -- Não --> C["/auth/login"]
     B -- Sim --> D[AuthService.refreshProfile]
     D -- 401 Unauthorized --> E[logout + /login]
     D -- Sucesso --> F{role?}
@@ -133,8 +133,8 @@ flowchart TD
     I -- Sucesso --> J[Salva token\nBusca perfil /auth/me]
     J --> F
 
-    G --> K[[Painel Admin\ndashboard · approvals\ntasks-create · events]]
-    H --> L[[Interface Player\ndashboard · shop\nbadges · history]]
+    G --> K["Painel Admin\ndashboard · approvals\ntasks-create · events"]
+    H --> L["Interface Player\ndashboard · shop\nbadges · history"]
 ```
 
 ---
