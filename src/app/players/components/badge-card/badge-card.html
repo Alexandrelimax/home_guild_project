@@ -2,7 +2,7 @@
 
     <div class="original-card-content">
         <div class="icon-wrapper">
-            <img [src]="badge().icon" class="badge-icon">
+            <img [src]="badge().icon" class="badge-icon" onerror="this.onerror=null;this.src='assets/placeholder.svg'">
         </div>
 
         <div class="card-info-box">
@@ -20,7 +20,7 @@
 
     @if (isActive()) {
     <div class="card-expansion-overlay animate-pop">
-        <img [src]="badge().card_image" class="full-card-img">
+        <img [src]="badge().card_image" class="full-card-img" onerror="this.onerror=null;this.src='assets/placeholder.svg'">
 
         <span class="tap-to-close-hint">TOQUE PARA FECHAR</span>
     </div>

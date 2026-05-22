@@ -7,7 +7,7 @@
 
     <div class="absolute inset-x-0 top-0 h-48 bg-black/50 overflow-hidden flex items-center justify-center">
       @if (cardImage()) {
-      <img [src]="cardImage()" class="h-full w-full object-cover opacity-70 group-hover:opacity-100 transition-opacity mix-blend-screen">
+      <img [src]="cardImage()" class="h-full w-full object-cover opacity-70 group-hover:opacity-100 transition-opacity mix-blend-screen" onerror="this.onerror=null;this.src='assets/placeholder.svg'">
       } @else {
       <div class="text-slate-600 font-mono text-xs opacity-50 border border-dashed border-slate-600 p-8 rounded">sem imagem</div>
       }
