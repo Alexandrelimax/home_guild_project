@@ -56,13 +56,14 @@ export class RewardCardComponent {
     return 'bg-amber-900/40 hover:bg-amber-700 text-amber-100';
   });
 
-  // Resolve o ícone correto baseado no nível gerado
   rewardIcon = computed(() => {
-    const reward = this.reward();
     if (this.isMilestone()) {
-      return `assets/icons/mastery_${reward.min_level}.png`;
+      const level = this.reward().min_level ?? 0;
+      if (level >= environment.game.milestoneLevels.gold) return 'assets/icons/mastery_gold.svg';
+      if (level >= environment.game.milestoneLevels.silver) return 'assets/icons/mastery_silver.svg';
+      return 'assets/icons/mastery_bronze.svg';
     }
-    return 'assets/coins/saco_bits.png';
+    return 'assets/icons/bits.svg';
   });
 
   // O blur de fundo (Glow)
