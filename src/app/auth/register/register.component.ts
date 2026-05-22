@@ -1,9 +1,9 @@
 ﻿import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../../services/auth.service';
-import { environment } from '../../../../environments/environment';
-import { AuthCardLayoutComponent } from '../../components/auth-card-layout/auth-card-layout.component';
+import { AuthService } from '../../services/auth.service';
+import { environment } from '../../../environments/environment';
+import { AuthCardLayoutComponent } from '../../players/components/auth-card-layout/auth-card-layout.component';
 
 @Component({
   selector: 'app-register',
