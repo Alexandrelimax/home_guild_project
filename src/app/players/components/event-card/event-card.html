@@ -1,0 +1,67 @@
+<div
+  class="relative p-5 rounded-xl border-2 transition-all duration-300 bg-gradient-to-br from-amber-950/40 to-slate-900/60"
+  [class]="statusConfig().border">
+
+  <!-- Label de evento -->
+  <div class="flex items-center justify-between mb-4">
+    <span class="text-[10px] font-orbitron font-black tracking-[0.25em] text-amber-400 uppercase">
+      ⚡ Evento Especial
+    </span>
+    <span class="text-[9px] font-orbitron font-bold px-2 py-1 rounded bg-black/30 border border-white/5"
+      [class]="statusConfig().color">
+      {{ statusConfig().label }}
+    </span>
+  </div>
+
+  <div class="flex gap-4 items-start">
+
+    <!-- Info do evento -->
+    <div class="flex-1">
+      <h3 class="text-sm font-orbitron text-slate-100 uppercase tracking-tight mb-2">
+        {{ eventQuest().title }}
+      </h3>
+      <p class="text-[11px] text-slate-400 font-mono leading-relaxed mb-4">
+        {{ eventQuest().description }}
+      </p>
+
+      <div class="flex gap-3 mb-4">
+        <span class="text-xs font-orbitron text-amber-400">+{{ eventQuest().xp }} <span class="text-[8px] opacity-70">XP</span></span>
+        <span class="text-xs font-orbitron text-cyan-400">+{{ eventQuest().bits }} <span class="text-[8px] opacity-70">BITS</span></span>
+      </div>
+
+      @if (eventQuest().status === 'pending') {
+        <button
+          (click)="onSubmit.emit(eventQuest().id)"
+          class="w-full py-2 bg-amber-900/30 hover:bg-amber-600 text-amber-300 hover:text-white border border-amber-500/40 rounded text-[9px] font-orbitron uppercase tracking-widest transition-all animate-pulse">
+          Concluir e Enviar ✓
+        </button>
+      }
+
+      @if (eventQuest().status === 'analyzing') {
+        <div class="w-full py-2 text-center bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded text-[9px] font-orbitron uppercase tracking-widest">
+          🔍 Aguardando análise...
+        </div>
+      }
+    </div>
+
+    <!-- Preview do badge -->
+    <div class="flex flex-col items-center gap-2 min-w-[72px]">
+      <div
+        class="w-16 h-16 rounded-full border-2 border-purple-500/60 bg-gradient-to-br from-purple-800 to-indigo-900 flex items-center justify-center overflow-hidden transition-all duration-500"
+        [class.blur-sm]="badgeLocked()"
+        [class.opacity-40]="badgeLocked()">
+        <img
+          [src]="eventQuest().badge.icon"
+          [alt]="eventQuest().badge.title"
+          class="w-full h-full object-cover rounded-full"
+          onerror="this.style.display='none'">
+      </div>
+      <span class="text-[9px] font-mono text-center"
+        [class.text-slate-600]="badgeLocked()"
+        [class.text-purple-400]="!badgeLocked()">
+        {{ badgeLocked() ? 'Bloqueado' : 'Desbloqueado!' }}
+      </span>
+    </div>
+
+  </div>
+</div>
